@@ -131,29 +131,45 @@ const changeLocation = (emitData) => {
 };
 </script>
 <template>
-    <div class="flex flex-col h-full">
+    <div class="flex flex-row flex-wrap xl:flex-col h-full">
         <BaseSelect
             :cityList="props.cityList"
             :selectedCity="props.selectedCity"
             @changeLocation="changeLocation"
         />
 
-        <div class="pt-10 pb-10 border-solid border-b-2 border-gray-250">
-            <unicon :name="WxIcon" fill="#222" class="w-60 h-60"></unicon>
+        <div
+            class="pt-4 pb-2 sm:pt-6 sm:pb-6 xl:pt-10 xl:pb-10 xl:border-solid xl:border-b-2 xl:border-gray-250 flex xl:block"
+        >
+            <unicon
+                :name="WxIcon"
+                fill="#222"
+                class="w-20 h-20 sm:w-32 sm:h-32 xl:w-60 xl:h-60"
+            ></unicon>
 
-            <p class="text-5xl font-bold text-gray-900 pt-6 pb-2">
-                {{ T.time.elementValue[0].value }}
-                <unicon name="celsius" fill="#222" class="w-10 h-10"></unicon>
-            </p>
-            <p class="text-2xl font-bold text-gray-900 py-1">
-                {{ Wx.time.elementValue[0].value }}
-            </p>
-            <p class="text-2xl font-bold text-gray-900 py-1">
-                <span class="text-xl" v-html="currentTime"></span>
-            </p>
+            <div class="ml-6 sm:ml-8 xl:ml-0">
+                <p
+                    class="text-4xl sm:text-5xl font-bold text-gray-900 pt-2 xl:pt-6 pb-2"
+                >
+                    {{ T.time.elementValue[0].value }}
+                    <unicon
+                        name="celsius"
+                        fill="#222"
+                        class="w-5 h-5 sm:w-10 sm:h-10"
+                    ></unicon>
+                </p>
+                <p class="text-xl sm:text-2xl font-bold text-gray-900 py-1">
+                    {{ Wx.time.elementValue[0].value }}
+                </p>
+                <p class="text-xl sm:text-2xl font-bold text-gray-900 py-1">
+                    <span class="text-xl" v-html="currentTime"></span>
+                </p>
+            </div>
         </div>
 
-        <div class="pt-10 pb-10">
+        <div
+            class="w-full sm:w-auto flex flex-wrap sm:block sm:ml-10 xl:ml-0 pt-2 pb-2 sm:pt-6 sm:pb-6 xl:pt-10 xl:pb-10"
+        >
             <BaseSideForecast
                 icon="umbrella"
                 fillColor="#222"

@@ -73,17 +73,17 @@ const dataList = computed(() => {
         :key="index"
         class="pb-4"
     >
-        <h3 class="text-gray-900 text-3xl font-bold">
+        <h2 class="text-gray-900 text-2xl lg:text-3xl font-bold">
             {{ weatherDescriptionList[0].description }}
-        </h3>
+        </h2>
         <div class="py-2">
-            <p class="text-gray-900 text-2xl font-bold mb-2">
+            <p class="text-gray-900 text-2xl lg:text-2xl font-bold mb-2">
                 {{
                     `${currentTime.startTime.slice(11, 16)} - ${currentTime.endTime.slice(11, 16)}`
                 }}
             </p>
             <p
-                class="w-3/5 text-gray-800 text-xl font-bold mb-4"
+                class="w-full lg:w-3/5 text-gray-800 text-lg lg:text-xl font-bold mb-4"
                 v-for="(weatherTime, index) in weatherDescriptionList[0].time"
                 :key="index"
             >
@@ -94,15 +94,21 @@ const dataList = computed(() => {
                 </template>
             </p>
         </div>
-        <div class="grid grid-cols-4 gap-8 pt-6 pb-12">
+        <div
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6 pt-4 pb-8 lg:pt-6 lg:pb-12"
+        >
             <template v-for="data in dataList" :key="data.elementName">
                 <template v-if="!!data.time.length">
-                    <div class="bg-white py-8 px-6 rounded-xl shadow-md">
-                        <p class="text-gray-900 text-xl font-bold mb-4">
+                    <div
+                        class="bg-white py-3.5 px-3.5 sm:py-5 sm:px-4 lg:py-8 lg:px-6 rounded-xl shadow-md"
+                    >
+                        <p
+                            class="text-gray-900 text-base sm:text-lg lg:text-xl font-bold mb-4"
+                        >
                             {{ data.description }}
                         </p>
                         <p
-                            class="flex items-center text-gray-800 text-xl font-medium"
+                            class="flex items-center text-gray-800 text-base sm:text-lg lg:text-xl font-medium"
                             v-for="time in data.time"
                             :key="time.startTime"
                         >
@@ -117,7 +123,9 @@ const dataList = computed(() => {
                                 >
                                     {{ time.elementValue[0].value }}
                                 </template>
-                                <span class="text-lg ml-0.5">
+                                <span
+                                    class="text-md sm:text-base lg:text-lg ml-0.5"
+                                >
                                     <template
                                         v-if="
                                             data.elementName === 'MinCI' ||

@@ -62,7 +62,7 @@ watch(
 );
 </script>
 <template>
-    <section class="w-1/5 p-10 bg-gray-50">
+    <section class="xl:min-w-80 xl:w-1/5 p-5 lg:p-10 bg-gray-50">
         <template v-if="showData">
             <SideForecast
                 :selectedCity="selectedCity"
@@ -75,7 +75,7 @@ watch(
             <div><skeletonSide /></div>
         </template>
     </section>
-    <section class="w-4/5 p-10 bg-gray-100">
+    <section class="xl:w-4/5 p-5 lg:p-10 bg-gray-100">
         <TheHeader />
         <template v-if="showData">
             <WeekList :dataList="weatherFilter(dataList, 7)" />

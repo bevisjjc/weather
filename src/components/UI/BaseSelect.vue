@@ -12,7 +12,7 @@ const changeLocation = (event) => {
 </script>
 
 <template>
-    <div class="selectBox flex items-center w-full max-w-96 min-w-24">
+    <div class="selectBox flex items-center w-full xl:max-w-96 min-w-24">
         <unicon
             name="map-marker"
             fill="#222"
