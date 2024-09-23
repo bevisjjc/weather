@@ -12,19 +12,32 @@ const router = createRouter({
 		{
 			path: '/today',
 			name: 'today',
-			component: () => import('@/views/TodayView.vue')
+			component: () => import('@/views/TodayView.vue'),
+			meta: {
+				title: 'Weather - today',
+			},
 		},
 		{
 			path: '/week',
 			name: 'week',
-			component: () => import('@/views/WeekView.vue')
+			component: () => import('@/views/WeekView.vue'),
+			meta: {
+				title: 'Weather - week',
+			},
 		},
 		{
 			path: '/:catchAll(.*)',
 			name: 'NotFound',
-			component: () => import('@/views/NotFoundView.vue')
+			component: () => import('@/views/NotFoundView.vue'),
+			meta: {
+				title: 'Not Found',
+			},
 		}
 	]
+})
+
+router.beforeEach((to) => {
+	document.title = to.meta?.title ?? 'Weather app'
 })
 
 export default router
