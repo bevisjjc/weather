@@ -62,7 +62,9 @@ watch(
 );
 </script>
 <template>
-    <section class="xl:min-w-80 xl:w-1/5 p-5 lg:p-10 bg-gray-50">
+    <section
+        class="xl:min-w-80 xl:w-1/5 p-5 lg:p-10 xl:sticky xl:top-0 bg-gray-50"
+    >
         <template v-if="showData">
             <SideForecast
                 :selectedCity="selectedCity"

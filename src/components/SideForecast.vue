@@ -144,7 +144,7 @@ const changeLocation = (emitData) => {
             <unicon
                 :name="WxIcon"
                 fill="#222"
-                class="w-20 h-20 sm:w-32 sm:h-32 xl:w-60 xl:h-60"
+                class="w-20 h-20 sm:w-32 sm:h-32 xl:w-48 xl:h-48 2xl:w-60 2xl:h-60"
             ></unicon>
 
             <div class="ml-6 sm:ml-8 xl:ml-0">

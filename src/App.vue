@@ -2,7 +2,9 @@
 import { RouterView } from 'vue-router';
 </script>
 <template>
-    <main class="w-full min-h-screen flex flex-col xl:flex-row">
+    <main
+        class="w-full min-h-screen relative flex flex-col xl:items-start xl:flex-row"
+    >
         <RouterView />
     </main>
 </template>
