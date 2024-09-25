@@ -82,8 +82,8 @@ const dataList = computed(() => {
                     `${new Date(currentTime.startTime).getMonth() + 1} / ${new Date(
                         currentTime.startTime,
                     ).getDate()}
-                ${currentTime.startTime.slice(11, 16)} -
-                ${currentTime.endTime.slice(11, 16)}`
+                    ${currentTime.startTime.slice(11, 16)} -
+                    ${currentTime.endTime.slice(11, 16)}`
                 }}
             </p>
             <p

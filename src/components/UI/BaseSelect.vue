@@ -7,8 +7,6 @@ const props = defineProps({
     selectedCity: String,
 });
 
-console.log('route', route.query.city);
-
 const emit = defineEmits(['changeLocation']);
 
 const changeLocation = (event) => {

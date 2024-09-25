@@ -79,7 +79,11 @@ const dataList = computed(() => {
         <div class="py-2">
             <p class="text-gray-900 text-2xl lg:text-2xl font-bold mb-2">
                 {{
-                    `${currentTime.startTime.slice(11, 16)} - ${currentTime.endTime.slice(11, 16)}`
+                    `${new Date(currentTime.startTime).getMonth() + 1} / ${new Date(
+                        currentTime.startTime,
+                    ).getDate()}
+                    ${currentTime.startTime.slice(11, 16)} -
+                    ${currentTime.endTime.slice(11, 16)}`
                 }}
             </p>
             <p

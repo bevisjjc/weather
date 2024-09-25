@@ -32,8 +32,9 @@ export const useWeatherStore = defineStore('weather', () => {
 
         if (!array.length || !weatherData.value || isNaN(filter) || filter > 8) return [];
 
+        let filterArray = [];
         if (filter === 0) {
-            return array.map((item) => {
+            filterArray = array.map((item) => {
                 return {
                     elementName: item.elementName,
                     description: item.description,
@@ -41,27 +42,24 @@ export const useWeatherStore = defineStore('weather', () => {
                 };
             });
         } else {
-            const filterNum = filter === 0 ? filter = 0 : filter = filter - 1;
+            const filterNum = filter - 1;
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() + filterNum);
-            const filterArray = array.map((item) => {
+
+            filterArray = array.map((item) => {
                 return {
                     elementName: item.elementName,
                     description: item.description,
                     time: item.time.filter((time) => {
                         return (
-                            new Date(time.startTime).getDate() <= targetDate.getDate() // get from today to specific date
+                            new Date(time.startTime).getTime() <= targetDate.getTime() // get from today to specific date
                         );
                     }),
                 };
             });
-
-            // filterArray.forEach((item) => {
-            //     item.time = Array.isArray(item.time) ? item.time : [item.time];
-            // });
-
-            return filterArray;
         }
+
+        return filterArray;
     }
 
     const unitsTransform = (unit) => {
