@@ -9,11 +9,11 @@ const props = defineProps({
         required: true,
     },
     data: {
-        type: Object,
+        type: String,
         required: true,
     },
     data2: {
-        type: Object,
+        type: String,
         required: false,
         default: null,
     },
