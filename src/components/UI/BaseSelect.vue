@@ -1,8 +1,13 @@
 <script setup>
+import { useRoute } from 'vue-router';
+const route = useRoute();
+
 const props = defineProps({
     cityList: Array,
     selectedCity: String,
 });
+
+console.log('route', route.query.city);
 
 const emit = defineEmits(['changeLocation']);
 
@@ -23,9 +28,11 @@ const changeLocation = (event) => {
             @change="changeLocation"
             class="w-full block bg-zinc-50 text-gray-900 text-lg font-bold appearance-none outline-0 border-solid border-b-2 border-gray-250 cursor-pointer p-2.5 ml-2"
         >
-            <option v-for="city in props.cityList" :key="city">
-                {{ city }}
-            </option>
+            <template v-for="city in props.cityList" :key="city">
+                <option :value="city" :selected="city === route.query.city">
+                    {{ city }}
+                </option>
+            </template>
         </select>
     </div>
 </template>

@@ -5,6 +5,9 @@ import TodayList from '@/components/TodayList.vue';
 import skeletonList from '@/components/skeletonList.vue';
 import skeletonSide from '@/components/skeletonSide.vue';
 import { ref, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
 
 import { useWeatherStore } from '@/stores/weather';
 
@@ -22,8 +25,13 @@ const getWeather = async () => {
         await store.fetchWeather();
 
         cityList.value = store.weatherData.map((data) => data.locationName);
-        selectedCity.value = store.weatherData[0].locationName;
         dataList.value = store.weatherData[0].weatherElement;
+
+        //檢查是否有縣市參數，有的話就設定為該縣市，沒有的話就設定為第一筆資料
+        selectedCity.value =
+            route.query.city && cityList.value.includes(route.query.city)
+                ? route.query.city
+                : store.weatherData[0].locationName;
     } catch (error) {
         console.error(error);
     } finally {
@@ -53,9 +61,16 @@ watch(
             (data) => data.locationName === value,
         );
 
+        router.push({
+            query: {
+                city: selectedCity.value,
+            },
+        });
+
         fetchLoading.value = true;
         setTimeout(() => {
             dataList.value = selectedData.weatherElement;
+
             fetchLoading.value = false;
         }, 500);
     },
