@@ -95,7 +95,7 @@ watch(
     <section class="xl:w-4/5 p-5 lg:p-10 bg-gray-100">
         <TheHeader />
         <template v-if="showData">
-            <TodayList :dataList="weatherFilter(dataList, 1)" />
+            <TodayList :dataList="weatherFilter(dataList, 2)" />
         </template>
         <template v-else>
             <skeletonList />
